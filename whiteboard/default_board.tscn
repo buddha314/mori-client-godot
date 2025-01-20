@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://262vn8yndbyx"]
+
+[ext_resource type="Script" uid="uid://rssbhuk2w5av" path="res://whiteboard/default_board.gd" id="1_okwpt"]
+
+[node name="DefaultBoard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_okwpt")
+FACT_SLOT_COLOR = Color(0, 0.74902, 0, 1)
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.975
+anchor_bottom = 0.964
+offset_left = -1.0
+offset_top = 40.0
+offset_right = 23.7999
+offset_bottom = 26.3279
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 40.0
+
+[node name="AddRelation" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Add Relation"
+
+[node name="AddFact" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Add Fact
+"
+
+[connection signal="connection_request" from="GraphEdit" to="." method="_on_graph_edit_connection_request"]
+[connection signal="pressed" from="HBoxContainer/AddRelation" to="." method="_on_add_relation_pressed"]
+[connection signal="pressed" from="HBoxContainer/AddFact" to="." method="_on_add_fact_pressed"]

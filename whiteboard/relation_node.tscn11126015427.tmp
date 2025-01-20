@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbu78frfqbt6j"]
+
+[ext_resource type="Script" uid="uid://dh3h6txarxjej" path="res://whiteboard/relation_node.gd" id="1_akm62"]
+
+[node name="RelationNode" type="GraphNode"]
+offset_right = 306.0
+offset_bottom = 90.0
+resizable = true
+title = "Add Relation"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_akm62")
+ARITY = 2
+
+[node name="RelationHero" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RelationHero"]
+layout_mode = 2
+
+[node name="ArityLabel" type="RichTextLabel" parent="RelationHero/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Arity
+"
+
+[node name="Arity" type="SpinBox" parent="RelationHero/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Empty Fact"
+
+[connection signal="delete_request" from="." to="." method="_on_delete_request"]

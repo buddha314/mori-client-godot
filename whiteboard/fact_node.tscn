@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://cepxr1cjcpkx7"]
+
+[ext_resource type="Script" uid="uid://y5jbcm1ibk7o" path="res://whiteboard/fact_node.gd" id="1_4mbnh"]
+
+[node name="FactNode" type="GraphNode"]
+custom_minimum_size = Vector2(0, 40)
+offset_right = 292.0
+offset_bottom = 71.0
+title = "Fact Node"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_4mbnh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+text = "Description"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 2
+text = "Pr(X)"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="TextEdit2" type="TextEdit" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 2
+text = "1.0"
+
+[connection signal="delete_request" from="." to="." method="_on_delete_request"]
