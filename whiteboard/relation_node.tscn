@@ -6,7 +6,7 @@
 offset_right = 328.0
 offset_bottom = 194.0
 resizable = true
-title = "Add Relation"
+title = "Relation"
 slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)
@@ -29,6 +29,10 @@ script = ExtResource("1_akm62")
 ARITY = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
