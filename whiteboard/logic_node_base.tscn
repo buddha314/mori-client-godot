@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl8j4n1pyf824"]
+
+[ext_resource type="Script" uid="uid://cmir5esv24e5m" path="res://whiteboard/logic_node_base.gd" id="1_kdeal"]
+
+[node name="LogicNodeBase" type="GraphNode"]
+offset_right = 9.0
+offset_bottom = 55.0
+script = ExtResource("1_kdeal")
+FACT_OUTPUT_SLOT_COLOR = Color(0.192366, 0.422229, 1, 1)
+RULE_INPUT_SLOT_COLOR = Color(0.761384, 0.378612, 0.330591, 1)
+RELATION_SLOT_OUT_COLOR = Color(0.35837, 0.701538, 0.452302, 1)

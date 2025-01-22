@@ -5,10 +5,11 @@
 [node name="AndNode" type="GraphNode"]
 custom_minimum_size = Vector2(100, 40)
 anchors_preset = -1
-anchor_right = 0.194
-anchor_bottom = 0.176
-offset_right = 0.511993
-offset_bottom = -0.0480118
+anchor_right = 0.196
+anchor_bottom = 0.211
+offset_left = 2.0
+offset_right = 0.207993
+offset_bottom = 0.271988
 grow_horizontal = 2
 grow_vertical = 2
 title = "AND"

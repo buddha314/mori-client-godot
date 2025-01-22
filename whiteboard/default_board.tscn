@@ -10,8 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_okwpt")
-FACT_SLOT_COLOR = Color(0, 0.74902, 0, 1)
-RELATION_SLOT_OUT_COLOR = Color(0.00819378, 0.235508, 1, 1)
 
 [node name="GraphEdit" type="GraphEdit" parent="."]
 layout_mode = 1

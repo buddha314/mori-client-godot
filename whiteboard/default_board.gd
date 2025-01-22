@@ -1,11 +1,13 @@
 extends Control
 
-@export var FACT_SLOT_COLOR: Color
-@export var RELATION_SLOT_OUT_COLOR: Color
-@export var RULE_INPUT_NODE_COLOR: Color
 var relation_node: PackedScene = preload("res://whiteboard/relation_node.tscn")
 var fact_node: PackedScene = preload("res://whiteboard/fact_node.tscn")
 var and_node: PackedScene = preload("res://whiteboard/and_node.tscn")
+
+# Trying out signals for setting variables. Not the most efficient but
+# want to learn the tech for later.
+signal set_relation_slot_out_color(slot_out_color)
+signal set_rule_input_color(rule_input_color)
 
 var initial_position = Vector2(40,40);
 var NUM_RELATIONS: int = 0
@@ -18,8 +20,6 @@ func _on_add_relation_pressed() -> void:
 	#print("ur mama")
 	var node = relation_node.instantiate()
 	node.name = "relation_%d" % NUM_RELATIONS
-	node.FACT_SLOT_COLOR = FACT_SLOT_COLOR
-	node.RELATION_SLOT_OUT_COLOR = RELATION_SLOT_OUT_COLOR
 	node.position_offset = initial_position
 	$GraphEdit.add_child(node)
 	NUM_RELATIONS += 1
@@ -29,7 +29,6 @@ func _on_add_fact_pressed() -> void:
 	#print("In case you didn't know...")
 	var node = fact_node.instantiate()
 	node.name = "factnode_%d" % NUM_FACTS
-	node.FACT_SLOT_COLOR = FACT_SLOT_COLOR
 	node.position_offset = initial_position
 	$GraphEdit.add_child(node)
 	NUM_FACTS += 1	
@@ -61,6 +60,5 @@ func _on_graph_edit_connection_request(from_node: StringName, from_port: int, to
 func _on_add_and_pressed() -> void:
 	print("Creating AND Node")
 	var node = and_node.instantiate()
-	node.RULE_INPUT_NODE_COLOR = RULE_INPUT_NODE_COLOR
 	node.position_offset = initial_position
 	$GraphEdit.add_child(node)
