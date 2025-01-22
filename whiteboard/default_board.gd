@@ -2,8 +2,10 @@ extends Control
 
 @export var FACT_SLOT_COLOR: Color
 @export var RELATION_SLOT_OUT_COLOR: Color
+@export var RULE_INPUT_NODE_COLOR: Color
 var relation_node: PackedScene = preload("res://whiteboard/relation_node.tscn")
-var fact_node = preload("res://whiteboard/fact_node.tscn")
+var fact_node: PackedScene = preload("res://whiteboard/fact_node.tscn")
+var and_node: PackedScene = preload("res://whiteboard/and_node.tscn")
 
 var initial_position = Vector2(40,40);
 var NUM_RELATIONS: int = 0
@@ -54,3 +56,11 @@ func _on_graph_edit_connection_request(from_node: StringName, from_port: int, to
 	tn.get_child(tn.NUM_SLOTS_DEFAULT + to_port).find_child("TextEdit").set_text(
 		fn.get_node("HBoxContainer2/TextEdit").text
 	)
+
+
+func _on_add_and_pressed() -> void:
+	print("Creating AND Node")
+	var node = and_node.instantiate()
+	node.RULE_INPUT_NODE_COLOR = RULE_INPUT_NODE_COLOR
+	node.position_offset = initial_position
+	$GraphEdit.add_child(node)

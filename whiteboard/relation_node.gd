@@ -4,6 +4,7 @@ var SLOT_TEMPLATE = load("res://whiteboard/relation_node_fact_slot.tscn")
 
 @export var FACT_SLOT_COLOR: Color
 @export var RELATION_SLOT_OUT_COLOR: Color
+@export var RULE_INPUT_NODE_COLOR: Color
 @export var ARITY: int = 1
 @export var ARITY_TYPES: Array[int] = [0, 0]
 @export var NUM_SLOTS_DEFAULT: int
@@ -19,7 +20,7 @@ func _ready() -> void:
 		l.fit_content = true
 		$HBoxContainer3/VBoxContainer.add_child(l)
 		#print("Need a box here, I guess")
-	set_slot(3, false, 1, FACT_SLOT_COLOR , true, 1, RELATION_SLOT_OUT_COLOR)
+	set_slot(3, false, 1, FACT_SLOT_COLOR , true, 1, RULE_INPUT_NODE_COLOR)
 
 func _on_delete_request() -> void:
 	queue_free() # Replace with function body.

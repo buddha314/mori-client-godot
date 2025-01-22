@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://jtyfmg28gvko"]
+
+[ext_resource type="Script" uid="uid://bvo1efsco6nf8" path="res://whiteboard/and_node.gd" id="1_vypre"]
+
+[node name="AndNode" type="GraphNode"]
+custom_minimum_size = Vector2(100, 40)
+anchors_preset = -1
+anchor_right = 0.194
+anchor_bottom = 0.176
+offset_right = 0.511993
+offset_bottom = -0.0480118
+grow_horizontal = 2
+grow_vertical = 2
+title = "AND"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_vypre")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "All Must be True"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "+ New Input"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
