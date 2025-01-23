@@ -4,6 +4,7 @@ extends LogicNodeBase
 var RULE_INPUT_SLOT_TEMPLATE = load("res://whiteboard/rule_input_slot.tscn")
 
 func _ready() -> void:
+	LOGIC_CLASS = "rule_and"
 	NUM_SLOTS_DEFAULT = get_child_count()
 	
 func _on_button_pressed() -> void:

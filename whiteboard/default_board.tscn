@@ -40,7 +40,13 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Add AND"
 
+[node name="Run" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "RUN THAT BABY!"
+
 [connection signal="connection_request" from="GraphEdit" to="." method="_on_graph_edit_connection_request"]
 [connection signal="pressed" from="HBoxContainer/AddFact" to="." method="_on_add_fact_pressed"]
 [connection signal="pressed" from="HBoxContainer/AddRelation" to="." method="_on_add_relation_pressed"]
 [connection signal="pressed" from="HBoxContainer/AddAND" to="." method="_on_add_and_pressed"]
+[connection signal="pressed" from="HBoxContainer/Run" to="." method="_on_run_pressed"]

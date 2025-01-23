@@ -13,3 +13,6 @@ func _on_graph_edit_connection_request(from_node: StringName, from_port: int, to
 
 func _on_delete_request() -> void:
 	queue_free()
+
+func _to_json() -> String:
+	return ""

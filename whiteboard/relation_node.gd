@@ -6,6 +6,7 @@ var SLOT_TEMPLATE = load("res://whiteboard/relation_node_fact_slot.tscn")
 @export var ARITY_TYPES: Array[int] = [0, 0]
 
 func _ready() -> void:
+	LOGIC_CLASS = "relation"
 	NUM_SLOTS_DEFAULT = get_child_count()
 	$HBoxContainer2/SpinBox.value = ARITY
 	#print("Number of children at ready -> " + str(get_child_count()))
