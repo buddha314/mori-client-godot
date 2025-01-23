@@ -4,7 +4,6 @@ var SLOT_TEMPLATE = load("res://whiteboard/relation_node_fact_slot.tscn")
 
 @export var ARITY: int = 1
 @export var ARITY_TYPES: Array[int] = [0, 0]
-@export var NUM_SLOTS_DEFAULT: int
 
 func _ready() -> void:
 	NUM_SLOTS_DEFAULT = get_child_count()
