@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://jtyfmg28gvko"]
+[gd_scene load_steps=3 format=3 uid="uid://jtyfmg28gvko"]
 
 [ext_resource type="Script" uid="uid://bvo1efsco6nf8" path="res://whiteboard/and_node.gd" id="1_vypre"]
+[ext_resource type="Script" uid="uid://kp1aw20roahc" path="res://whiteboard/text_edit.gd" id="2_b5gwf"]
 
 [node name="AndNode" type="GraphNode"]
 custom_minimum_size = Vector2(100, 40)
@@ -31,15 +32,46 @@ slot/1/right_type = 0
 slot/1/right_color = Color(1, 1, 1, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
 script = ExtResource("1_vypre")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="NameContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NameContainer"]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 2
+text = "Name"
+
+[node name="NameInput" type="TextEdit" parent="NameContainer"]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+script = ExtResource("2_b5gwf")
+metadata/_custom_type_script = ExtResource("2_b5gwf")
+
+[node name="ContinueIcon" type="RichTextLabel" parent="NameContainer"]
+custom_minimum_size = Vector2(18, 40)
+layout_mode = 2
+text = "->"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "All Must be True"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+alignment = 1
 
 [node name="Button" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(0, 40)

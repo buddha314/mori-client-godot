@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgkfc3fqa1kck"]
+
+[ext_resource type="Script" uid="uid://kp1aw20roahc" path="res://whiteboard/text_edit.gd" id="1_hwia1"]
+
+[node name="TextEdit" type="TextEdit"]
+custom_minimum_size = Vector2(200, 40)
+anchors_preset = -1
+anchor_right = 0.174
+anchor_bottom = 0.062
+offset_right = -192.448
+offset_bottom = -32.176
+script = ExtResource("1_hwia1")

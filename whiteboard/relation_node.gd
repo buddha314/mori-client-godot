@@ -17,7 +17,7 @@ func _ready() -> void:
 		l.fit_content = true
 		$HBoxContainer3/VBoxContainer.add_child(l)
 		#print("Need a box here, I guess")
-	set_slot(3, false, 1, FACT_OUTPUT_SLOT_COLOR , true, 1, RULE_INPUT_SLOT_COLOR)
+	set_slot(0, false, 1, FACT_OUTPUT_SLOT_COLOR , true, 1, RULE_INPUT_SLOT_COLOR)
 
 func _on_delete_request() -> void:
 	queue_free() # Replace with function body.

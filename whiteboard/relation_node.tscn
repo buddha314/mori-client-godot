@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbu78frfqbt6j"]
+[gd_scene load_steps=3 format=3 uid="uid://bbu78frfqbt6j"]
 
 [ext_resource type="Script" uid="uid://dh3h6txarxjej" path="res://whiteboard/relation_node.gd" id="1_akm62"]
+[ext_resource type="Script" uid="uid://kp1aw20roahc" path="res://whiteboard/text_edit.gd" id="2_4fo1l"]
 
 [node name="RelationNode" type="GraphNode"]
 offset_right = 328.0
@@ -46,9 +47,25 @@ slot/3/draw_stylebox = true
 script = ExtResource("1_akm62")
 ARITY = 2
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="NameContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NameContainer"]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 2
+text = "Name"
+
+[node name="NameInput" type="TextEdit" parent="NameContainer"]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
+script = ExtResource("2_4fo1l")
+metadata/_custom_type_script = ExtResource("2_4fo1l")
+
+[node name="ContinueIcon" type="RichTextLabel" parent="NameContainer"]
+custom_minimum_size = Vector2(18, 40)
+layout_mode = 2
+text = "->"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 40)
@@ -78,16 +95,12 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+alignment = 1
 
 [node name="AddFact" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
-text = "+"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "output"
+text = "+ New Fact"
 
 [connection signal="delete_request" from="." to="." method="_on_delete_request"]
 [connection signal="pressed" from="HBoxContainer/AddFact" to="." method="_on_add_fact_pressed"]

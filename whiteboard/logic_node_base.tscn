@@ -1,11 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl8j4n1pyf824"]
+[gd_scene load_steps=3 format=3 uid="uid://cl8j4n1pyf824"]
 
 [ext_resource type="Script" uid="uid://cmir5esv24e5m" path="res://whiteboard/logic_node_base.gd" id="1_kdeal"]
+[ext_resource type="Script" uid="uid://kp1aw20roahc" path="res://whiteboard/text_edit.gd" id="2_en231"]
 
 [node name="LogicNodeBase" type="GraphNode"]
 offset_right = 9.0
 offset_bottom = 55.0
+position_offset = Vector2(200, 40)
+title = "Logic Node"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
 script = ExtResource("1_kdeal")
 FACT_OUTPUT_SLOT_COLOR = Color(0.192366, 0.422229, 1, 1)
 RULE_INPUT_SLOT_COLOR = Color(0.761384, 0.378612, 0.330591, 1)
 RELATION_SLOT_OUT_COLOR = Color(0.35837, 0.701538, 0.452302, 1)
+
+[node name="NameContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NameContainer"]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 2
+text = "Name"
+
+[node name="NameInput" type="TextEdit" parent="NameContainer"]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+script = ExtResource("2_en231")
+metadata/_custom_type_script = ExtResource("2_en231")
+
+[node name="ContinueIcon" type="RichTextLabel" parent="NameContainer"]
+custom_minimum_size = Vector2(18, 40)
+layout_mode = 2
+text = "->"
