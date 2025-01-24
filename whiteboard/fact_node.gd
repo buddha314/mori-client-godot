@@ -10,7 +10,6 @@ func _ready() -> void:
 func _on_delete_request() -> void:
 	queue_free()
 
-
 func _on_text_edit_text_changed() -> void:
 	NAME = $SlotContainer/TextEdit.text
 	#print(NAME)
@@ -26,7 +25,5 @@ func _to_json() -> String:
 	var j = {}
 	j["fact"] =  find_child("NameInput").text
 	j["probability"] = find_child("SlotValue").text
-	#print(c.find_child("SlotLabel").text)
-	#print(c.find_child("SlotValue").text)
 	return JSON.stringify(j)
 	

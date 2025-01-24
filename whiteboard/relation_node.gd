@@ -3,14 +3,14 @@ extends LogicNodeBase
 var SLOT_TEMPLATE = load("res://whiteboard/relation_node_fact_slot.tscn")
 
 @export var ARITY: int = 1
-@export var ARITY_TYPES: Array[int] = [0, 0]
+@export var ARITY_TYPES: Array[String]
 
 func _ready() -> void:
 	LOGIC_CLASS = "relation"
 	NUM_SLOTS_DEFAULT = get_child_count()
 	$HBoxContainer2/SpinBox.value = ARITY
 	#print("Number of children at ready -> " + str(get_child_count()))
-	ARITY_TYPES = [0,0]
+	ARITY_TYPES =  ["str", "str"]
 	for i in len(ARITY_TYPES):
 		var l = RichTextLabel.new()
 		l.add_text("I am entry: " + str(i))
@@ -29,3 +29,8 @@ func _on_add_fact_pressed() -> void:
 	add_child(f)
 	set_slot(get_child_count()-1, true, 1, FACT_OUTPUT_SLOT_COLOR, false, 1, Color.WHITE)
 	
+func _to_json() -> String:
+	var j = {}
+	j["relation"] = find_child("NameInput").text
+	j["arity_types"] = ARITY_TYPES
+	return JSON.stringify(j)

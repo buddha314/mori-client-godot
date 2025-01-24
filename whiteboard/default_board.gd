@@ -62,36 +62,17 @@ func _on_graph_edit_connection_request(from_node: StringName, from_port: int, to
 			fn.get_node("NameContainer/NameInput").text
 	)
 
-
-
 func _on_run_pressed() -> void:
-	print("\n conx")
-	print($GraphEdit.get_connection_list())
-	print("\n children")
-	print($GraphEdit.get_children())
-
 	var nodes = {}	
 	for c in $GraphEdit.get_children():
-		print("Child: ")
-		print(c)
-		print(c.name)
-		#if c.name.begins_with("factnode"):
 		if c.get_class().begins_with("GraphNode"):
 			var j = {}
-			#j["name"] = c.name
 			j["class"] = c.get_class()
-			#print(c._to_json())
 			j["data"] = JSON.parse_string(c._to_json())
-			#print(j)
-			nodes[c.name] = j
-			#print(nodes)
-	
-	for x in $GraphEdit.get_connection_list():
-		var f = $GraphEdit.find_child(x['from_node'])
-		#print(x['from_node'])
-		var t = $GraphEdit.find_child(x['to_node'])
+			nodes[c.name] = j	
 	
 	var logic_graph = {}
+	logic_graph["client"] = "mori-godot"
 	logic_graph["nodes"] = nodes
 	logic_graph["edges"] = $GraphEdit.get_connection_list()
 	print(logic_graph)
