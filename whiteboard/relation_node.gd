@@ -31,6 +31,7 @@ func _on_add_fact_pressed() -> void:
 	
 func _to_json() -> String:
 	var j = {}
+	j["logic_class"] = LOGIC_CLASS
 	j["relation"] = find_child("NameInput").text
 	j["arity_types"] = ARITY_TYPES
 	return JSON.stringify(j)

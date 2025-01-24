@@ -12,3 +12,9 @@ func _on_button_pressed() -> void:
 	var n = RULE_INPUT_SLOT_TEMPLATE.instantiate()
 	set_slot(get_child_count(), true, 1, RULE_INPUT_SLOT_COLOR, false, 1, Color.WHITE)
 	add_child(n)
+
+func _to_json() -> String:
+	var j = {}
+	j["logic_class"] = LOGIC_CLASS
+	j["relation"] = find_child("NameInput").text
+	return JSON.stringify(j)

@@ -75,6 +75,6 @@ func _on_run_pressed() -> void:
 	logic_graph["client"] = "mori-godot"
 	logic_graph["nodes"] = nodes
 	logic_graph["edges"] = $GraphEdit.get_connection_list()
-	print(logic_graph)
+	print(JSON.stringify(logic_graph, "  "))
 	
 	

@@ -15,14 +15,15 @@ func _on_text_edit_text_changed() -> void:
 	#print(NAME)
 
 func _on_text_edit_2_text_changed() -> void:
-	if (len( $HBoxContainer2/TextEdit2.text)) > 0:
-		PROBABILITY = float($HBoxContainer2/TextEdit2.text)
+	if (len( $SlotContainer/SlotValue.text)) > 0:
+		PROBABILITY = float($SlotContainer/SlotValue.text)
 		#print(PROBABILITY)
 	else:
 		PROBABILITY = 0.0
 
 func _to_json() -> String:
 	var j = {}
+	j["logic_class"] = LOGIC_CLASS
 	j["fact"] =  find_child("NameInput").text
 	j["probability"] = find_child("SlotValue").text
 	return JSON.stringify(j)
