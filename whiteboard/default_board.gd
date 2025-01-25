@@ -63,18 +63,26 @@ func _on_graph_edit_connection_request(from_node: StringName, from_port: int, to
 	)
 
 func _on_run_pressed() -> void:
-	var nodes = {}	
+	var nodes = []	
 	for c in $GraphEdit.get_children():
 		if c.get_class().begins_with("GraphNode"):
 			var j = {}
+			j["id"] = c.name
+			j["logic_class"] = c.LOGIC_CLASS
 			j["class"] = c.get_class()
 			j["data"] = JSON.parse_string(c._to_json())
-			nodes[c.name] = j	
+			nodes.append(j)
 	
 	var logic_graph = {}
 	logic_graph["client"] = "mori-godot"
 	logic_graph["nodes"] = nodes
 	logic_graph["edges"] = $GraphEdit.get_connection_list()
-	print(JSON.stringify(logic_graph, "  "))
+	_write_data(logic_graph, "whiteboard.json")
+	#print(JSON.stringify(logic_graph, "  "))
 	
-	
+
+func _write_data(logic_graph: Dictionary, file_name: String = "whiteboard.json") -> void:
+	var file = FileAccess.open("res://data/%s" % file_name, FileAccess.WRITE)
+	var t: String = JSON.stringify(logic_graph, "  ")
+	print(t)
+	file.store_string(t)
