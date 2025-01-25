@@ -1,6 +1,6 @@
 # Mori Client in Godot
 
-Mori is the new logic layer, let's build a client in Godot!
+[Mori](https://github.com/buddha314/mori-san) is the new logic layer, let's build a client in Godot!
 
 ## Connection List
 
