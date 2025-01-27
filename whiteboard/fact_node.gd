@@ -1,11 +1,15 @@
 extends LogicNodeBase
+class_name FactNode
 
 @export var PROBABILITY: float
 @export var NAME: String
+const self_scene: PackedScene = preload("res://whiteboard/fact_node.tscn")
 
 func _ready() -> void:
 	LOGIC_CLASS = "fact"
+	resizable = true
 	set_slot(0, false, 1, Color.WHITE , true, 1, FACT_OUTPUT_SLOT_COLOR)
+	print("I'm READY!!!")
 
 func _on_delete_request() -> void:
 	queue_free()
@@ -27,4 +31,11 @@ func _to_json() -> String:
 	j["fact"] =  find_child("NameInput").text
 	j["probability"] = find_child("SlotValue").text
 	return JSON.stringify(j)
+
+static func constructor(j: Dictionary) -> FactNode:
+	var obj = self_scene.instantiate()
+	obj.title = "Fact Node"
+	obj.find_child("NameInput").text = j["data"]["fact"]
+	obj.find_child("SlotValue").text = j["data"]["probability"]
+	return obj
 	

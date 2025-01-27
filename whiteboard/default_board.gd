@@ -86,3 +86,20 @@ func _write_data(logic_graph: Dictionary, file_name: String = "whiteboard.json")
 	var t: String = JSON.stringify(logic_graph, "  ")
 	print(t)
 	file.store_string(t)
+
+func _load_data(file_name: String = "whiteboard.json") -> void:
+	var file = FileAccess.open("res://data/%s" % file_name, FileAccess.READ)
+	var j = JSON.new()
+	var j_err = j.parse(file.get_as_text())
+	var j_obj = j.get_data()
+	for n in j_obj["nodes"]:
+		#print(n)
+		if n["logic_class"] == "fact":
+			var x: FactNode = FactNode.constructor(n)
+			$GraphEdit.add_child(x)
+		elif n["logic_class"] == "relation":
+			var x: RelationNode = RelationNode.constructor(n)
+			$GraphEdit.add_child(x)
+
+func _on_load_pressed() -> void:
+	_load_data()

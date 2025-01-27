@@ -1,6 +1,8 @@
 extends LogicNodeBase
+class_name RelationNode
 
 var SLOT_TEMPLATE = load("res://whiteboard/relation_node_fact_slot.tscn")
+const self_scene: PackedScene = preload("res://whiteboard/relation_node.tscn")
 
 @export var ARITY: int = 1
 @export var ARITY_TYPES: Array[String]
@@ -35,3 +37,8 @@ func _to_json() -> String:
 	j["relation"] = find_child("NameInput").text
 	j["arity_types"] = ARITY_TYPES
 	return JSON.stringify(j)
+
+static func constructor(j: Dictionary) -> RelationNode:
+	var obj = self_scene.instantiate()
+	return obj
+	

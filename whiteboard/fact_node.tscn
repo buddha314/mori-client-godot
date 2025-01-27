@@ -4,9 +4,10 @@
 [ext_resource type="Script" uid="uid://kp1aw20roahc" path="res://whiteboard/text_edit.gd" id="2_0ej34"]
 
 [node name="FactNode" type="GraphNode"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(200, 40)
 offset_right = 292.0
 offset_bottom = 71.0
+resizable = true
 title = "Fact Node"
 slot/0/left_enabled = false
 slot/0/left_type = 0

@@ -16,3 +16,6 @@ func _on_delete_request() -> void:
 
 func _to_json() -> String:
 	return ""
+	
+func _from_json(j: Dictionary) -> GraphNode:
+	return GraphNode.new()
