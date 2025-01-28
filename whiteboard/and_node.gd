@@ -1,5 +1,7 @@
 extends LogicNodeBase
+class_name RuleAnd
 
+const self_scene: PackedScene = preload("res://whiteboard/and_node.tscn")
 #@export var RULE_INPUT_NODE_COLOR: Color
 var RULE_INPUT_SLOT_TEMPLATE = load("res://whiteboard/rule_input_slot.tscn")
 
@@ -18,3 +20,7 @@ func _to_json() -> String:
 	j["logic_class"] = LOGIC_CLASS
 	j["relation"] = find_child("NameInput").text
 	return JSON.stringify(j)
+
+static func constructor(j: Dictionary) -> RuleAnd:
+	var obj = self_scene.instantiate()
+	return obj

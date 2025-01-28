@@ -40,5 +40,6 @@ func _to_json() -> String:
 
 static func constructor(j: Dictionary) -> RelationNode:
 	var obj = self_scene.instantiate()
+	obj.find_child("NameInput").text = j["data"]["relation"]
 	return obj
 	

@@ -100,6 +100,9 @@ func _load_data(file_name: String = "whiteboard.json") -> void:
 		elif n["logic_class"] == "relation":
 			var x: RelationNode = RelationNode.constructor(n)
 			$GraphEdit.add_child(x)
-
+		elif n["logic_class"] == "rule_and":
+			var x: RuleAnd = RuleAnd.constructor(n)
+			$GraphEdit.add_child(x)
+			
 func _on_load_pressed() -> void:
 	_load_data()

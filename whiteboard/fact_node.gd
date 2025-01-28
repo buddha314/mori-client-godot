@@ -9,7 +9,6 @@ func _ready() -> void:
 	LOGIC_CLASS = "fact"
 	resizable = true
 	set_slot(0, false, 1, Color.WHITE , true, 1, FACT_OUTPUT_SLOT_COLOR)
-	print("I'm READY!!!")
 
 func _on_delete_request() -> void:
 	queue_free()
