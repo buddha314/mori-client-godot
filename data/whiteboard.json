@@ -28,6 +28,13 @@
 	  "keep_alive": false,
 	  "to_node": "rulenode_0",
 	  "to_port": 1
+	},
+	{
+	  "from_node": "factnode_2",
+	  "from_port": 0,
+	  "keep_alive": false,
+	  "to_node": "relation_1",
+	  "to_port": 1
 	}
   ],
   "nodes": [
@@ -42,12 +49,11 @@
 	},
 	{
 	  "class": "GraphNode",
-	  "fact": "flood",
-	  "id": "factnode_2",
-	  "logic_class": "fact",
-	  "n_input_ports": 0,
-	  "n_output_ports": 1,
-	  "probability": "0.5"
+	  "id": "rulenode_0",
+	  "logic_class": "rule_and",
+	  "n_input_ports": 2,
+	  "n_output_ports": 0,
+	  "rule": "alarm"
 	},
 	{
 	  "class": "GraphNode",
@@ -60,11 +66,12 @@
 	},
 	{
 	  "class": "GraphNode",
-	  "id": "rulenode_0",
-	  "logic_class": "rule_and",
-	  "n_input_ports": 2,
-	  "n_output_ports": 0,
-	  "rule": "alarm"
+	  "fact": "flood",
+	  "id": "factnode_2",
+	  "logic_class": "fact",
+	  "n_input_ports": 0,
+	  "n_output_ports": 1,
+	  "probability": "0.5"
 	},
 	{
 	  "arity_types": [
