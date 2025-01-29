@@ -14,8 +14,11 @@ func _ready() -> void:
 
 func _on_add_relation_pressed() -> void:
 	#print("ur mama")
-	var node = relation_node.instantiate()
-	node.name = "relation_%d" % NUM_RELATIONS
+	var j = {}
+	j["id"] = "relation_%d" % NUM_RELATIONS
+	j["relation"] = "new relation (%d)" % NUM_RELATIONS
+	j["n_input_ports"] = 1
+	var node = RelationNode.constructor(j)
 	node.position_offset = initial_position
 	$GraphEdit.add_child(node)
 	NUM_RELATIONS += 1
@@ -23,55 +26,54 @@ func _on_add_relation_pressed() -> void:
 
 func _on_add_fact_pressed() -> void:
 	#print("In case you didn't know...")
-	var node = fact_node.instantiate()
-	node.name = "factnode_%d" % NUM_FACTS
+	var j = {}
+	j["id"] = "factnode_%d" % NUM_FACTS
+	j["fact"] = "new fact (%d)" % NUM_FACTS
+	j["probability"] = 0.5
+	var node = FactNode.constructor(j)
+	#var node = fact_node.instantiate()
+	#node.name = "factnode_%d" % NUM_FACTS
 	node.position_offset = initial_position
 	$GraphEdit.add_child(node)
 	NUM_FACTS += 1	
 
 func _on_add_and_pressed() -> void:
 	print("Creating AND Node")
-	var node = and_node.instantiate()
-	node.name = "rulenode_%d" % NUM_RULES
+	var j = {}
+	j["id"] = "rulenode_%d" % NUM_RULES
+	j["rule"] = "new rule (%d)" % NUM_RULES
+	j["n_input_ports"] = 1
+	var node = RuleAnd.constructor(j)
 	node.position_offset = initial_position
 	$GraphEdit.add_child(node)
 	NUM_RULES +=1
 
 func _on_graph_edit_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
-	print("Connection Request to port -> " + str(to_port))
-	var fn: LogicNodeBase
-	var tn: LogicNodeBase
-	print($GraphEdit.get_children())
-
-	for n in $GraphEdit.get_children():
-		if n.name == from_node:
-			#print("Found your fkn kid")
-			fn = n		
-		if n.name == to_node:
-			tn = n
-	$GraphEdit.connect_node(from_node, from_port, to_node, to_port)
-	print("Actual to slot? " + str(to_port))
-	print("How many input ports right now? " + str(tn.NUM_SLOTS_DEFAULT))
-	#print(tn.get_child(tn.NUM_SLOTS_DEFAULT + to_port))
-	#print(tn.get_child(tn.NUM_SLOTS_DEFAULT + to_port).find_child("TextEdit"))
+	_find_and_connect_nodes(from_node, from_port, to_node, to_port)
 	
+func _find_and_connect_nodes(from_node, from_port, to_node, to_port) -> void:
+	print("Connecting %s:%s -> %s:%s" % [from_node, from_port, to_node, to_port])
+	var fn: LogicNodeBase = $GraphEdit.get_node(NodePath(from_node))
+	#var fn: LogicNodeBase = $GraphEdit.find_child(from_node)
+	var tn: LogicNodeBase = $GraphEdit.get_node(NodePath(to_node))
+	print(fn)
+	print(tn)
+
+	$GraphEdit.connect_node(from_node, from_port, to_node, to_port)
+	#$GraphEdit.connect_node(fn.name, from_port, tn.name, to_port)
 	# This feels like a kludge
-	tn.get_child(tn.NUM_SLOTS_DEFAULT + to_port).find_child(
+	print(tn.get_input_port_slot(to_port))
+	tn.get_child(tn.get_input_port_slot(to_port)).find_child(
 		"SlotName"
-		).set_text(
-			fn.get_node("NameContainer/NameInput").text
+	).set_text(
+			fn.get_node("NameContainer/NameInput").text		
 	)
 
 func _on_run_pressed() -> void:
 	var nodes = []	
 	for c in $GraphEdit.get_children():
 		if c.get_class().begins_with("GraphNode"):
-			var j = {}
-			j["id"] = c.name
-			j["logic_class"] = c.LOGIC_CLASS
-			j["class"] = c.get_class()
-			j["data"] = JSON.parse_string(c._to_json())
-			nodes.append(j)
+			nodes.append(c._to_json())
 	
 	var logic_graph = {}
 	logic_graph["client"] = "mori-godot"
@@ -103,6 +105,14 @@ func _load_data(file_name: String = "whiteboard.json") -> void:
 		elif n["logic_class"] == "rule_and":
 			var x: RuleAnd = RuleAnd.constructor(n)
 			$GraphEdit.add_child(x)
+	
+	for n in j_obj["edges"]:
+		print(n)
+		_find_and_connect_nodes(
+			n["from_node"],
+			n["from_port"],
+			n["to_node"],
+			n["to_port"])
 			
 func _on_load_pressed() -> void:
 	_load_data()

@@ -9,7 +9,7 @@ const self_scene: PackedScene = preload("res://whiteboard/relation_node.tscn")
 
 func _ready() -> void:
 	LOGIC_CLASS = "relation"
-	NUM_SLOTS_DEFAULT = get_child_count()
+	NUM_SLOTS_DEFAULT = get_child_count()-1
 	$HBoxContainer2/SpinBox.value = ARITY
 	#print("Number of children at ready -> " + str(get_child_count()))
 	ARITY_TYPES =  ["str", "str"]
@@ -25,21 +25,29 @@ func _on_delete_request() -> void:
 	queue_free() # Replace with function body.
 
 func _on_add_fact_pressed() -> void:
-	#print("ADD ME BABY!!")
-	var f = SLOT_TEMPLATE.instantiate()
-	#print("Before add: #input ports -> " + str(get_input_port_count()))
-	add_child(f)
-	set_slot(get_child_count()-1, true, 1, FACT_OUTPUT_SLOT_COLOR, false, 1, Color.WHITE)
+	_add_input_slots(1)
 	
-func _to_json() -> String:
-	var j = {}
+func _add_input_slots(n_inputs: int) -> void:
+	for i in n_inputs:
+		print("Current have %d slots" )
+		var f = SLOT_TEMPLATE.instantiate()
+		add_child(f)
+		set_slot(get_child_count()-1, true, 1, FACT_OUTPUT_SLOT_COLOR, false, 1, Color.WHITE)
+	
+func _to_json() -> Dictionary:
+	var j = super()
 	j["logic_class"] = LOGIC_CLASS
 	j["relation"] = find_child("NameInput").text
 	j["arity_types"] = ARITY_TYPES
-	return JSON.stringify(j)
+	return j
 
 static func constructor(j: Dictionary) -> RelationNode:
+	#print("relation node")
+	#print(j)
 	var obj = self_scene.instantiate()
-	obj.find_child("NameInput").text = j["data"]["relation"]
+	obj.name = j["id"]
+	obj.unique_name_in_owner = true
+	obj.find_child("NameInput").text = j["relation"]
+	obj._add_input_slots(j["n_input_ports"])
 	return obj
 	
