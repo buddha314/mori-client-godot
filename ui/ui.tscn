@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtlh0aj5sg0lx"]
+
+[ext_resource type="Script" path="res://ui/ui.gd" id="1_8ilqv"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8ilqv")
+
+[node name="SpaceBarHint" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 596.0
+offset_right = 638.0
+offset_bottom = 623.0
+text = "<SPACE> for UI"
+
+[node name="MenuOptions" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 45.0
+offset_top = 572.0
+offset_right = 144.0
+offset_bottom = 616.0
+
+[node name="FileOtpion" type="RichTextLabel" parent="MenuOptions"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Files"
+
+[node name="NodesOption" type="RichTextLabel" parent="MenuOptions"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+text = "Nodes"
