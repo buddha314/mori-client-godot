@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://262vn8yndbyx"]
+[gd_scene load_steps=3 format=3 uid="uid://262vn8yndbyx"]
 
-[ext_resource type="Script" uid="uid://rssbhuk2w5av" path="res://whiteboard/default_board.gd" id="1_okwpt"]
+[ext_resource type="Script" path="res://whiteboard/default_board.gd" id="1_okwpt"]
+[ext_resource type="PackedScene" uid="uid://dtlh0aj5sg0lx" path="res://ui/ui.tscn" id="2_a4n2a"]
 
 [node name="DefaultBoard" type="Control"]
 layout_mode = 3
@@ -50,6 +51,9 @@ layout_mode = 2
 text = "Load Me"
 
 [node name="FileWriter" type="Node" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("2_a4n2a")]
+layout_mode = 1
 
 [connection signal="connection_request" from="GraphEdit" to="." method="_on_graph_edit_connection_request"]
 [connection signal="pressed" from="HBoxContainer/AddFact" to="." method="_on_add_fact_pressed"]
