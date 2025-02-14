@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtlh0aj5sg0lx"]
+[gd_scene load_steps=4 format=3 uid="uid://dtlh0aj5sg0lx"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_8ilqv"]
+[ext_resource type="Shader" path="res://ui/menu_container.gdshader" id="2_gf1pj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvw48"]
+resource_local_to_scene = true
+shader = ExtResource("2_gf1pj")
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -12,27 +17,46 @@ grow_vertical = 2
 script = ExtResource("1_8ilqv")
 
 [node name="SpaceBarHint" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 512.0
-offset_top = 596.0
-offset_right = 638.0
-offset_bottom = 623.0
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = -14.0
+offset_right = 154.0
+offset_bottom = 13.0
+grow_vertical = 2
+rotation = 1.58023
 text = "<SPACE> for UI"
 
-[node name="MenuOptions" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 45.0
-offset_top = 572.0
-offset_right = 144.0
-offset_bottom = 616.0
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+material = SubResource("ShaderMaterial_jvw48")
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 53.0
+offset_bottom = 20.0
+grow_vertical = 2
 
-[node name="FileOtpion" type="RichTextLabel" parent="MenuOptions"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-text = "Files"
-
-[node name="NodesOption" type="RichTextLabel" parent="MenuOptions"]
-custom_minimum_size = Vector2(50, 30)
+[node name="NodeMenuButton" type="MenuButton" parent="MenuContainer"]
 layout_mode = 2
 text = "Nodes"
+item_count = 2
+popup/item_0/text = "New Fact"
+popup/item_1/text = "New Rule"
+popup/item_1/id = 1
+
+[node name="FileMenuButton" type="MenuButton" parent="MenuContainer"]
+layout_mode = 2
+text = "Files"
+item_count = 2
+popup/item_0/text = "Load"
+popup/item_1/text = "Save"
+popup/item_1/id = 1
+
+[node name="RunButton" type="Button" parent="MenuContainer"]
+layout_mode = 2
+text = "Run"
