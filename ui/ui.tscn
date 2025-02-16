@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtlh0aj5sg0lx"]
+[gd_scene load_steps=5 format=3 uid="uid://dtlh0aj5sg0lx"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_8ilqv"]
 [ext_resource type="Shader" path="res://ui/menu_container.gdshader" id="2_gf1pj"]
+[ext_resource type="Theme" uid="uid://d1rrgtlebom4y" path="res://ui/ui_theme.tres" id="3_1ipkb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jvw48"]
 resource_local_to_scene = true
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_1ipkb")
 script = ExtResource("1_8ilqv")
 
 [node name="SpaceBarHint" type="RichTextLabel" parent="."]
@@ -44,10 +46,6 @@ grow_vertical = 2
 [node name="NodeMenuButton" type="MenuButton" parent="MenuContainer"]
 layout_mode = 2
 text = "Nodes"
-item_count = 2
-popup/item_0/text = "New Fact"
-popup/item_1/text = "New Rule"
-popup/item_1/id = 1
 
 [node name="FileMenuButton" type="MenuButton" parent="MenuContainer"]
 layout_mode = 2
@@ -60,3 +58,41 @@ popup/item_1/id = 1
 [node name="RunButton" type="Button" parent="MenuContainer"]
 layout_mode = 2
 text = "Run"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -40.0
+offset_right = 92.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Button" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Data"
+
+[node name="Label2" type="Button" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Fact"
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Rule"
+
+[node name="Button2" type="Button" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "AND"

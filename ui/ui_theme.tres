@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://d1rrgtlebom4y"]
+
+[ext_resource type="FontFile" uid="uid://c76nj31yn7iee" path="res://fonts/fantasque-sans-mono/OTF/FantasqueSansMono-Regular.otf" id="1_p2apj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_261g5"]
+bg_color = Color(0.142831, 0.494077, 0.878642, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5rt2"]
+bg_color = Color(0.892382, 0.467078, 0.219206, 1)
+
+[resource]
+default_font = ExtResource("1_p2apj")
+Button/fonts/font = ExtResource("1_p2apj")
+Button/styles/normal = SubResource("StyleBoxFlat_261g5")
+Button/styles/pressed = SubResource("StyleBoxFlat_d5rt2")
