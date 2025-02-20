@@ -12,7 +12,7 @@ config_version=5
 
 config/name="mori-client-godot"
 run/main_scene="res://whiteboard/default_board.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [godot_hub]
